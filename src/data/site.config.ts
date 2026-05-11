@@ -154,7 +154,10 @@ const config: SiteConfig = {
     { id: 'avis', label: 'Notre avis' },
     { id: 'faq', label: 'FAQ' },
   ],
-  pages: [],
+  pages: [
+    { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/' },
+    { type: 'blog', label: 'Avis', slug: '/avis/' },
+  ],
 };
 
 export default config;

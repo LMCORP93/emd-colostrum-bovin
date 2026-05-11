@@ -1,0 +1,113 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+const firstReviewProduct = {
+  brandName: topProduct.brand,
+  brandLogoSrc: topProduct.brandLogo,
+  rating: topProduct.rating,
+  reviewLabel: `${topProduct.reviewCount} avis analysés`,
+  ctaText: 'Voir l’offre Primal',
+  ctaLink: topProduct.affiliateLink,
+};
+const today = '11 Mai 2026';
+
+const faq = [{'question': 'Notre avis sur le Colostrum Bovin Primal est-il positif ?', 'answer': 'Oui, l’avis est positif pour un usage adulte prudent : origine française, taux d’IgG à 50%, format poudre et tests qualité sont de bons signaux. Le prix reste premium et le produit ne doit pas être présenté comme une solution médicale.'}, {'question': 'Le Colostrum Bovin Primal vaut-il son prix ?', 'answer': 'Le prix est plus élevé qu’un colostrum générique, mais il se justifie mieux si l’on valorise l’origine française, la concentration en IgG, la traçabilité et la microfiltration à basse température.'}, {'question': 'Quels sont les points faibles de Primal ?', 'answer': 'Les principaux points faibles sont le prix premium, la disponibilité surtout en ligne et le recul limité côté avis produit spécifiques au colostrum par rapport à des catégories plus installées.'}, {'question': 'Le code LMC10 fonctionne-t-il sur Primal ?', 'answer': 'Le code LMC10 est indiqué pour obtenir une remise sur la boutique officielle Primal. Le montant final doit toujours être vérifié au moment du paiement.'}, {'question': 'À qui s’adresse ce produit ?', 'answer': 'Il s’adresse surtout aux adultes qui veulent tester une poudre de colostrum bovin sérieuse, avec une fiche claire, une origine française et un taux d’IgG annoncé.'}];
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Colostrum Bovin Primal avis : test 2026',
+  description: 'Notre avis sur le Colostrum Bovin Primal : formule, IgG, origine, prix, code promo, points forts, limites et verdict.',
+  author: { '@type': 'Person', name: config.author.name },
+  publisher: { '@type': 'Organization', name: config.siteName },
+  datePublished: '2026-05-11',
+  dateModified: '2026-05-11',
+  mainEntityOfPage: new URL('/avis/', config.domain).toString(),
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<BaseLayout title="Colostrum Bovin Primal avis : test 2026" description="Notre avis sur le Colostrum Bovin Primal : formule, IgG, origine, prix, code promo, points forts, limites et verdict." ogImage="/images/content/colostrum-avis-hero.webp">
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(faqSchema)} />
+  <BlogHero title="Colostrum Bovin Primal : notre avis complet" description="Origine française, 50% d’IgG, poudre, prix premium : on analyse le Colostrum Bovin Primal sans promesse magique." author={config.author.name} authorAvatar={config.author.avatar} date={today} readingTime="11 min de lecture" breadcrumbs={[{ label: 'Colostrum bovin', href: '/' }, { label: 'Avis', href: '/avis/' }]} bannerImage="/images/content/colostrum-avis-hero.webp" product={topProduct} heroButton={{ text: 'Lire la suite', href: '#en-bref' }} showOfferBlock={false} />
+  <main style="background-color:#fff;"><div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid"><div class="content-column">
+    <div id="intro"><FirstReview tag="En bref" heading="Résumé rapide" paragraphs={['Le Colostrum Bovin Primal est une option sérieuse si l’on cherche une poudre de colostrum bovin adulte avec origine claire, concentration en IgG annoncée et fiche produit lisible.', 'Son principal intérêt vient de la combinaison entre origine française, 50% d’IgG, microfiltration à basse température et format poudre. Ce sont des signaux plus concrets que les promesses génériques vues sur beaucoup de compléments.', 'Notre avis est positif, avec une nuance : le prix est premium et le colostrum ne doit pas être acheté comme une solution miracle. C’est un complément de routine, à utiliser prudemment.']} assets={['Origine française et collecte rapide annoncées', 'Concentration en IgG à 50%', 'Format poudre simple à doser avec code LMC10']} considerations={['Prix plus élevé que les alternatives génériques', 'Produit surtout disponible en ligne', 'À éviter en cas d’allergie aux protéines de lait']} product={firstReviewProduct} /></div>
+    <ReviewPromoCard product={topProduct} />
+    <TableOfContents items={[{id:'intro',label:'En bref'}, {id:'formule',label:'Formule'}, {id:'qualite',label:'Qualité'}, {id:'prix',label:'Prix'}, {id:'pour-qui',label:'Pour qui'}, {id:'limites',label:'Limites'}, {id:'verdict',label:'Verdict'}, {id:'faq-section',label:'FAQ'}]} />
+    <section id="formule" class="seo-guide"><div class="rich-text"><h2>Que contient le Colostrum Bovin Primal ?</h2>
+      <p>Le Colostrum Bovin Primal est présenté comme une poudre de colostrum bovin avec une concentration en IgG garantie à 50%. C’est le point le plus important à regarder, car les IgG servent souvent de repère pour évaluer la concentration d’un produit à base de colostrum.</p>
+      <p>Le produit est pensé pour les adultes qui veulent intégrer le colostrum dans une routine simple. La poudre peut être mélangée à une boisson froide ou tiède, selon les recommandations de la marque. Ce format évite aussi le côté parfois rigide des gélules, surtout si l’on veut ajuster la prise progressivement.</p>
+      <p>La fiche met également en avant une origine française, une collecte rapide après vêlage et une transformation douce. Ces éléments comptent parce que le colostrum est une matière sensible. Plus la chaîne est claire, plus le produit inspire confiance.</p>
+      <p>Sur le papier, la formule est donc cohérente. Elle ne cherche pas à empiler dix ingrédients pour donner une impression de complexité. Elle mise plutôt sur une matière première précise, un taux d’IgG élevé et une présentation claire.</p>
+    </div></section>
+    <ContentImage src="/images/content/colostrum-avis-hero.webp" alt="Poudre de colostrum bovin préparée dans un verre" caption="Le format poudre est le principal avantage pratique du Colostrum Bovin Primal." />
+    <section id="qualite" class="seo-guide"><div class="rich-text"><h2>Les signaux qualité qui comptent vraiment</h2>
+      <p>Sur une niche comme le colostrum bovin, la qualité ne se juge pas seulement au design du site ou au storytelling de la marque. Il faut regarder les éléments vérifiables : origine, concentration, méthode de transformation, tests et transparence.</p>
+      <p>Primal coche plusieurs cases intéressantes. L’origine française rassure, surtout face à des produits internationaux dont la chaîne d’approvisionnement est parfois floue. Le taux d’IgG à 50% donne un repère concret. La microfiltration à basse température est aussi un bon signal, car elle suggère une volonté de préserver la matière première.</p>
+      <p>Ce qui nous plaît surtout, c’est la cohérence globale. La marque ne vend pas un colostrum comme un remède miracle. Le produit est présenté comme un complément premium, avec des arguments liés à la qualité plutôt qu’à une promesse médicale.</p>
+      <p>Le point à surveiller reste la disponibilité d’informations détaillées dans le temps. Sur une catégorie jeune, les marques doivent continuer à documenter les tests, les lots et les retours utilisateurs pour construire la confiance.</p>
+    </div></section>
+    <InnerNote emoji="📌" text="<strong>Notre lecture :</strong> Le bon signal n’est pas seulement “50% d’IgG”. C’est le combo : origine claire, procédé doux, dosage compréhensible et discours prudent." />
+    <ReviewPromoCard product={topProduct} />
+    <section id="prix" class="seo-guide"><div class="rich-text"><h2>Prix, code promo et rapport qualité-prix</h2>
+      <p>Le Colostrum Bovin Primal se place sur un positionnement premium. Le prix standard indiqué est de 55,00 €. Avec le code LMC10, le prix indicatif descend à 49,50 €. Le montant final doit toujours être vérifié directement sur la boutique, car les offres peuvent évoluer.</p>
+      <p>Est-ce cher ? Oui, si on compare uniquement au poids ou au prix facial de certains colostrums génériques. Mais cette comparaison est incomplète. Un colostrum sans taux d’IgG clair, sans origine solide et sans transparence peut coûter moins cher tout en étant moins rassurant.</p>
+      <p>Le bon raisonnement est donc le rapport qualité-prix. Si l’objectif est de tester un produit sérieux, documenté et simple à utiliser, Primal est cohérent. Si l’objectif est seulement d’acheter la poudre la moins chère possible, ce ne sera probablement pas le premier choix.</p>
+    </div></section>
+    <ComparisonTable title="Synthèse de notre avis" headers={[{ label: 'Critère' }, { label: 'Verdict' }]} rows={[{ cells: ['Origine', 'Bonne : la traçabilité limite les produits flous'] }, { cells: ['IgG', 'Très bon signal : 50% donne un repère de concentration'] }, { cells: ['Format', 'Pratique : la poudre se dose facilement'] }, { cells: ['Prix', 'Premium : plus cher, mais mieux documenté'] }, { cells: ['Tolérance', 'À surveiller : produit laitier, pas adapté à tous'] }]} />
+    <section id="pour-qui" class="seo-guide"><div class="rich-text"><h2>À qui s’adresse le Colostrum Bovin Primal ?</h2>
+      <p>Primal s’adresse surtout aux adultes qui veulent tester le colostrum bovin de manière sérieuse, sans acheter une formule vague. Le profil type est une personne déjà attentive à sa digestion, à sa récupération, à sa nutrition ou à sa routine bien-être.</p>
+      <p>Le produit peut aussi intéresser les personnes qui veulent éviter les mélanges trop complexes. Ici, l’intérêt est centré sur le colostrum bovin lui-même. C’est plus simple à comprendre et plus facile à évaluer.</p>
+      <p>En revanche, ce n’est pas un produit à acheter impulsivement si l’on attend un effet immédiat ou spectaculaire. Le colostrum s’inscrit plutôt dans une routine régulière. Il faut accepter une logique de fond, avec une observation progressive de la tolérance et du ressenti.</p>
+      <p>Les personnes allergiques au lait, intolérantes aux produits laitiers, enceintes, allaitantes, sous traitement ou suivies médicalement doivent demander un avis professionnel avant d’utiliser ce type de complément.</p>
+    </div></section>
+    <ContentImage src="/images/content/colostrum-bienfaits-hero.webp" alt="Verre de boisson au colostrum bovin et bol de poudre" caption="Une routine colostrum doit rester simple : dose claire, prise régulière, tolérance surveillée." />
+    <section id="limites" class="seo-guide"><div class="rich-text"><h2>Les limites à connaître avant d’acheter</h2>
+      <p>Le premier point faible est le prix. Même avec une remise, Primal reste un produit premium. Cela peut être justifié par la qualité annoncée, mais ce n’est pas anodin pour une cure régulière.</p>
+      <p>Le deuxième point faible est le recul limité sur cette catégorie en France. Le colostrum bovin adulte reste moins installé que le magnésium, la créatine ou les oméga-3. Il faut donc garder une approche prudente et ne pas construire des attentes trop fortes.</p>
+      <p>Le troisième point est la tolérance. Comme le produit vient du lait, il peut ne pas convenir à tout le monde. C’est un détail majeur, surtout pour les personnes sensibles aux produits laitiers.</p>
+      <p>Enfin, il faut se méfier de l’effet “complément premium”. Un beau produit peut donner envie de tout lui attribuer. Notre avis reste positif, mais rationnel : bon choix pour tester sérieusement le colostrum bovin, pas produit magique.</p>
+      <p>Il faut aussi accepter que le colostrum bovin soit une catégorie encore jeune pour le grand public français. Cela veut dire moins de comparaisons indépendantes, moins de retours très détaillés et parfois des avis clients plus dispersés. Ce n’est pas bloquant, mais cela impose de juger le produit sur des critères concrets plutôt que sur l’effet de mode.</p>
+      <p>Autre limite : la prise doit rester régulière pour être évaluée correctement. Si vous prenez le produit deux fois puis l’oubliez, l’avis sera forcément biaisé. Pour se faire une idée propre, mieux vaut prévoir une routine simple, noter la tolérance digestive, puis décider après plusieurs semaines si le rapport prix-ressenti vous convient.</p>
+      <p>Dernier point : le colostrum bovin ne doit pas remplacer les bases. Sommeil, alimentation, hydratation et suivi médical si besoin restent prioritaires. Primal peut compléter une routine sérieuse, mais il ne corrige pas une hygiène de vie désorganisée.</p>
+    </div></section>
+    <section id="verdict" class="seo-guide"><div class="rich-text"><h2>Verdict : faut-il acheter le Colostrum Bovin Primal ?</h2>
+      <p>Oui, si vous cherchez une formule de colostrum bovin claire, premium et facile à utiliser. Primal coche les critères qui comptent : origine française, taux d’IgG annoncé, format poudre, tests qualité et fiche produit cohérente.</p>
+      <p>Non, si vous cherchez le prix le plus bas du marché, si vous êtes allergique aux produits laitiers ou si vous attendez une solution médicale. Dans ces cas, mieux vaut passer votre tour ou demander un avis professionnel.</p>
+      <p>Notre verdict final : c’est actuellement l’une des options les plus propres pour tester le colostrum bovin adulte en France. Le produit est cohérent, le discours reste raisonnable et le code LMC10 améliore le rapport qualité-prix.</p>
+      <p>La meilleure manière de l’aborder est simple : ne pas attendre une transformation immédiate, mais évaluer le produit comme une brique de routine. Si la tolérance est bonne, que la prise est facile et que le budget reste acceptable, Primal devient un choix logique. Si l’un de ces trois points bloque, il vaut mieux reporter l’achat plutôt que forcer.</p>
+      <p>Pour un premier achat, nous privilégions aussi la boutique officielle plutôt qu’une marketplace inconnue. Cela permet de limiter les doutes sur la fraîcheur du lot, le service client, les conditions de retour et l’application du code promo. Sur une matière première sensible comme le colostrum, ce détail compte plus qu’une petite différence de prix.</p>
+      <p>En résumé, notre avis n’est pas “tout le monde doit l’acheter”. Notre avis est plutôt : si vous voulez tester le colostrum bovin avec une formule claire, Primal fait partie des choix les plus rassurants à ce stade.</p>
+      <h3>Comment se faire un avis honnête après achat ?</h3>
+      <p>Le meilleur réflexe est de définir une période de test réaliste avant de commencer. Une prise isolée ne dit pas grand-chose. Une routine suivie, avec une alimentation stable et un sommeil correct, donne une lecture plus juste du produit.</p>
+      <p>Il faut ensuite regarder des critères simples : le produit se mélange-t-il facilement, le goût est-il acceptable, la digestion reste-t-elle confortable, la prise est-elle compatible avec le quotidien ? Ces critères pratiques comptent autant que la fiche technique, car un complément abandonné après trois jours ne sert à rien.</p>
+      <p>Notre conseil est aussi de ne pas changer toute la routine en même temps. Si vous commencez colostrum, magnésium, probiotiques et nouveau régime la même semaine, vous ne saurez pas ce qui influence votre ressenti. Un test propre est un test isolé.</p>
+      <p>Au final, Primal mérite un avis favorable parce que la base produit est claire. Mais le vrai verdict personnel dépendra toujours de trois choses : votre tolérance, votre régularité et votre budget.</p>
+      <p>Un bon achat est donc un achat cadré. Avant de commander, demandez-vous pourquoi vous voulez tester le colostrum : confort digestif, routine bien-être, curiosité nutritionnelle, récupération ou simple envie d’essayer une formule premium. Plus l’objectif est clair, plus l’avis après quelques semaines sera utile.</p>
+      <p>À l’inverse, si l’objectif est flou ou si vous attendez un effet médical précis, ce n’est probablement pas le bon moment pour acheter. Le produit peut être intéressant, mais il doit rester à sa juste place : un complément alimentaire qualitatif, pas une réponse universelle.</p>
+      <p>Ce positionnement est aussi ce qui rend notre avis plutôt favorable. Primal ne gagne pas parce que la marque promet plus que les autres, mais parce que la formule est lisible et cohérente. Sur une niche où beaucoup de produits se ressemblent, cette clarté compte.</p>
+      <p>Si vous comparez avec d’autres colostrums, gardez donc la même grille : origine, taux d’IgG, procédé, transparence, prix par dose et simplicité d’usage. Si un concurrent coche mieux ces cases demain, l’avis peut évoluer. Pour l’instant, Primal reste une option solide pour un premier test sérieux.</p>
+    </div></section>
+    <ReviewPromoCard product={topProduct} />
+    <FAQSection faq={faq} />
+  </div><aside class="sidebar-column"><SidebarCTA logoSrc={topProduct.brandLogo} promoCode={topProduct.promoCode} promoPercent={topProduct.promoPercent} originalPrice={topProduct.originalPrice} discountPrice={topProduct.discountPrice} ctaLink={topProduct.affiliateLink} heroImage={topProduct.image} rating={topProduct.rating} reviewCount={topProduct.reviewCount} productName={topProduct.name} brandName={topProduct.brand} /></aside></div></div></div></main>
+</BaseLayout>

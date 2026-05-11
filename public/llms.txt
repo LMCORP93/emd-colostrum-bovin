@@ -1,13 +1,15 @@
 # Colostrum Bovin
 
-Site preview LMC sur le colostrum bovin en France.
+Guide éditorial sur le colostrum bovin en France.
 
 URL canonique preview: https://emd-colostrum-bovin.pages.dev/
 
 Pages importantes:
 - / : guide colostrum bovin, bienfaits, avis et produit recommandé Primal Supplements.
+- /bienfaits/ : guide sur les bienfaits potentiels du colostrum bovin, avec limites et critères qualité.
+- /avis/ : avis détaillé sur le Colostrum Bovin Primal, prix, formule, points forts et limites.
 
 Produit principal:
-- Colostrum Bovin Primal, code promo LMC10, lien partenaire officiel.
+- Colostrum Bovin Primal, code promo LMC10, lien officiel Primal Supplements.
 
-Ce preview est noindex jusqu’à validation et connexion du domaine colostrum-bovin.fr.
+Ce preview est noindex jusqu’à validation et connexion du domaine final.
