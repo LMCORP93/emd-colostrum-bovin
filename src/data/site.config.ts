@@ -159,6 +159,7 @@ const config: SiteConfig = {
     { type: 'blog', label: 'Avis Primal', slug: '/avis/' },
     { type: 'blog', label: 'Danger', slug: '/danger/' },
     { type: 'blog', label: 'Posologie', slug: '/posologie/' },
+    { type: 'blog', label: 'Pharmacie', slug: '/colostrum-bovin-pharmacie/' },
   ],
 };
 
