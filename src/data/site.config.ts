@@ -84,8 +84,8 @@ const products: Product[] = [
 ];
 
 const config: SiteConfig = {
-  domain: 'https://emd-colostrum-bovin.pages.dev',
-  isIndexable: false,
+  domain: 'https://colostrum-bovin.fr',
+  isIndexable: true,
   siteName: 'Colostrum Bovin',
   brand: products[0].brand,
   product: products[0].name,
@@ -116,7 +116,7 @@ const config: SiteConfig = {
       'Le code LMC10 fait passer le prix indicatif de 55,00 € à 49,50 €.'
     ],
     considerations: [
-      'Niche encore jeune en France : le volume est plus petit que magnésium ou shilajit.',
+      'Catégorie encore jeune en France : le volume est plus petit que magnésium ou shilajit.',
       'Sujet YMYL : rester prudent, pas de promesse médicale.',
       'Le colostrum ne remplace pas un avis médical en cas de pathologie, grossesse ou traitement.'
     ],
