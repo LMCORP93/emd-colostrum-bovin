@@ -56,7 +56,7 @@ const products: Product[] = [
     brand: 'Primal Supplements',
     slug: 'colostrum-bovin-primal',
     image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/6a01ace20c008437809a85f2_Colostrum%20Bovin%20Primal.jpg',
-    brandLogo: '/images/logos/primal-supplements.svg',
+    brandLogo: '/images/logos/primal-logo.svg',
     rating: 9.1,
     reviewCount: 590,
     promoCode: 'LMC10',

@@ -254,7 +254,7 @@ html {
 }
 @media (min-width: 992px) {
   .blog-grid {
-    grid-template-columns: 2fr 0.5fr;
+    grid-template-columns: minmax(0, 2fr) minmax(15rem, 0.65fr);
     gap: 3rem;
   }
 }
