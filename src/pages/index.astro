@@ -1,0 +1,150 @@
+
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import ComparatorCard from '@/components/ComparatorCard.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+const faq = config.faq;
+const toAbsoluteUrl = (value: string) => /^https?:\/\//i.test(value) ? value : new URL(value, config.domain).toString();
+const numericPrice = (value: string) => String(value ?? '').replace(',', '.').replace(/[^\d.]/g, '');
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  '@id': new URL('/#product-colostrum-bovin-primal', config.domain).toString(),
+  name: topProduct.name,
+  image: toAbsoluteUrl(topProduct.image),
+  description: topProduct.description,
+  category: config.productCategory,
+  brand: { '@type': 'Brand', name: topProduct.brand },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    price: numericPrice(topProduct.discountPrice),
+    availability: 'https://schema.org/InStock',
+    url: topProduct.affiliateLink,
+    itemCondition: 'https://schema.org/NewCondition',
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: topProduct.rating, bestRating: 10, worstRating: 1, reviewCount: topProduct.reviewCount },
+};
+---
+
+<BaseLayout
+  title="Colostrum bovin : avis, bienfaits et guide 2026"
+  description="Guide colostrum bovin 2026 : bienfaits, avis, critères qualité, prix et notre sélection avec le Colostrum Bovin Primal en produit principal."
+>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  })} />
+
+  <BlogHero
+    title="Colostrum bovin : bienfaits, avis et quel complément choisir en 2026"
+    description="Le colostrum bovin arrive en France comme complément premium pour les adultes. On fait le tri entre promesses marketing, critères qualité et vraie formule intéressante."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="11 Mai 2026"
+    readingTime="9 min de lecture"
+    breadcrumbs={[{ label: 'Colostrum bovin', href: '/' }]}
+    bannerImage="/images/content/colostrum-bovin-hero.webp"
+    product={{
+      name: topProduct.name,
+      image: topProduct.image,
+      promoCode: topProduct.promoCode,
+      promoPercent: topProduct.promoPercent,
+      originalPrice: topProduct.originalPrice,
+      discountPrice: topProduct.discountPrice,
+      affiliateLink: topProduct.affiliateLink,
+    }}
+    heroButton={{ text: 'Voir le produit recommandé', href: '#produit-recommande' }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color: #ffffff;">
+    <div class="container-large padding-global">
+      <div class="padding-section-medium">
+        <div class="blog-grid">
+          <div class="content-column">
+            <section id="introduction" class="mb-8">
+              <div class="rich-text">
+                <h2>Pourquoi créer un guide sur le colostrum bovin ?</h2>
+                <p>Le colostrum bovin est encore une niche jeune en France, mais la demande existe déjà autour des requêtes <strong>colostrum</strong>, <strong>colostrum bienfaits</strong>, <strong>colostrum bovin</strong> et <strong>colostrum pour adulte</strong>. Le problème : Google mélange beaucoup de contenus sur l’allaitement, la grossesse et le premier lait maternel.</p>
+                <p>Notre angle est plus précis : parler du <strong>colostrum bovin comme complément alimentaire adulte</strong>, sans promesse médicale, avec une lecture claire des critères qualité. C’est aussi pour cette raison que nous avons choisi une première version simple, centrée sur un produit principal déjà présent dans notre CMS : le <strong>Colostrum Bovin Primal</strong>.</p>
+                <p>Cette page sert donc de base EMD : elle explique le sujet, présente le produit recommandé, puis prépare les futures pages dédiées aux bienfaits, aux avis et aux précautions.</p>
+              </div>
+            </section>
+
+            <TableOfContents items={config.tocItems} />
+
+            <section id="produit-recommande" class="comparatif-cards">
+              <div id={`product-${topProduct.slug}`}>
+                <ComparatorCard product={topProduct} />
+              </div>
+            </section>
+
+            <section id="bienfaits" class="seo-guide">
+              <div class="rich-text">
+                <h2>Colostrum bovin : les bienfaits à connaître</h2>
+                <p>Le colostrum bovin est naturellement riche en immunoglobulines, protéines, peptides et facteurs nutritionnels. En complément alimentaire, il est surtout recherché par les adultes qui veulent soutenir leur routine intestinale, leur récupération ou leur hygiène de vie globale.</p>
+                <p>Il faut rester prudent : ce n’est pas un médicament, et les résultats peuvent varier selon la qualité du produit, la dose, la régularité et le profil de la personne. La bonne approche consiste à regarder les éléments factuels : origine, méthode de collecte, taux d’IgG, transformation à basse température, tests qualité et transparence de la marque.</p>
+
+                <h3>Pourquoi le taux d’IgG compte ?</h3>
+                <p>Les IgG, ou immunoglobulines G, sont souvent utilisées comme indicateur de qualité dans les produits à base de colostrum. Primal annonce une concentration à 50%, ce qui place le produit dans une zone premium par rapport aux formules génériques peu documentées.</p>
+
+                <h3>Pourquoi choisir une poudre ?</h3>
+                <p>Le format poudre permet de doser simplement le produit et de l’ajouter à une boisson froide ou tempérée. C’est pratique pour une routine quotidienne, à condition de respecter les recommandations publiées par la marque.</p>
+              </div>
+            </section>
+
+            <section id="choisir" class="seo-guide">
+              <div class="rich-text">
+                <h2>Comment choisir un bon colostrum bovin ?</h2>
+                <p><strong>1. L’origine.</strong><br />Un colostrum bovin sérieux doit expliquer d’où vient la matière première. Ici, Primal indique une origine française et une collecte rapide après vêlage.</p>
+                <p><strong>2. La concentration.</strong><br />Un taux d’IgG clair est plus rassurant qu’une fiche produit vague. Le seuil de 50% annoncé par Primal est un vrai signal qualité.</p>
+                <p><strong>3. La transformation.</strong><br />La microfiltration à basse température est intéressante car le colostrum est une matière sensible. Une transformation trop agressive peut réduire l’intérêt du produit.</p>
+                <p><strong>4. Le prix réel.</strong><br />Le prix standard affiché dans notre CMS est de 55,00 €. Avec le code LMC10, le prix indicatif descend à 49,50 €. Cela reste premium, mais cohérent avec une formule traçable et testée.</p>
+              </div>
+            </section>
+
+            <section id="avis" class="seo-guide">
+              <div class="rich-text">
+                <h2>Notre avis sur le Colostrum Bovin Primal</h2>
+                <p>Pour une première page EMD sur cette niche, <strong>Primal est le meilleur produit à mettre en avant</strong>. Il coche les cases qui comptent : origine française, taux d’IgG annoncé, format poudre, tests qualité, marque déjà connue dans l’écosystème LMC et lien produit direct disponible.</p>
+                <p>Le point faible principal reste le côté mono-produit : aujourd’hui, nous n’avons pas encore assez de partenaires colostrum pour faire un vrai comparatif large. C’est pour cela que cette première version assume un format guide + produit recommandé plutôt qu’un faux top 10 rempli d’alternatives faibles.</p>
+                <p>Verdict : bon sujet EMD lean, à construire page par page. La homepage pose la base, puis les prochaines pages naturelles seront <strong>colostrum bienfaits</strong>, <strong>avis colostrum Primal</strong> et <strong>colostrum effets secondaires</strong>.</p>
+              </div>
+            </section>
+
+            <FAQSection faq={faq} />
+          </div>
+
+          <aside class="sidebar-column">
+            <SidebarCTA
+              logoSrc={topProduct.brandLogo}
+              promoCode={topProduct.promoCode}
+              promoPercent={topProduct.promoPercent}
+              originalPrice={topProduct.originalPrice}
+              discountPrice={topProduct.discountPrice}
+              ctaLink={topProduct.affiliateLink}
+              heroImage={topProduct.image}
+              rating={topProduct.rating}
+              reviewCount={topProduct.reviewCount}
+              productName={topProduct.name}
+              brandName={topProduct.brand}
+            />
+          </aside>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
