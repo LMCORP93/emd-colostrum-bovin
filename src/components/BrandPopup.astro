@@ -93,17 +93,6 @@ const triggerText = hasPromoCode ? `Code promo ${promoCode}` : `Voir l’offre`;
 
     if (!popup) return;
 
-    let autoTimer: ReturnType<typeof setTimeout> | null = null;
-
-    // Only auto-show once per session
-    const autoShow = () => {
-      if (sessionStorage.getItem('emd-brand-popup-shown')) return;
-      autoTimer = setTimeout(() => {
-        openPopup();
-        sessionStorage.setItem('emd-brand-popup-shown', 'true');
-      }, 15000);
-    };
-
     const openPopup = () => {
       popup.classList.add('is-open');
       document.body.style.overflow = 'hidden';
@@ -114,15 +103,11 @@ const triggerText = hasPromoCode ? `Code promo ${promoCode}` : `Voir l’offre`;
     const closePopup = () => {
       popup.classList.remove('is-open');
       document.body.style.overflow = '';
-      if (autoTimer) clearTimeout(autoTimer);
       // Show trigger again after closing
       if (trigger) trigger.style.display = '';
     };
 
-    // Auto show after 15s
-    autoShow();
-
-    // Manual open from floating button
+    // Manual open only: the popup never interrupts the hero automatically.
     if (trigger) trigger.addEventListener('click', openPopup);
 
     // Close handlers
