@@ -79,7 +79,7 @@ const products: Product[] = [
       'Produit principalement disponible en ligne',
       'Section avis produit encore limitée sur la page officielle'
     ],
-    description: 'Le Colostrum Bovin Primal est actuellement l’un des points d’entrée les plus cohérents sur cette niche : formule française, 50% d’IgG, poudre facile à utiliser et fiche produit claire.'
+    description: 'Le Colostrum Bovin Primal est actuellement l’une des options les plus cohérentes de cette catégorie : formule française, 50% d’IgG, poudre facile à utiliser et fiche produit claire.'
   }
 ];
 
@@ -156,7 +156,9 @@ const config: SiteConfig = {
   ],
   pages: [
     { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/' },
-    { type: 'blog', label: 'Avis', slug: '/avis/' },
+    { type: 'blog', label: 'Avis Primal', slug: '/avis/' },
+    { type: 'blog', label: 'Danger', slug: '/danger/' },
+    { type: 'blog', label: 'Posologie', slug: '/posologie/' },
   ],
 };
 

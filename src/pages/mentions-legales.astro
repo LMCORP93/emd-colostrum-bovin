@@ -7,7 +7,7 @@ const legalPageDescription = 'Informations légales et mentions obligatoires du 
 const legalPageUrl = new URL(Astro.url.pathname, config.domain).toString();
 ---
 
-<BaseLayout title="Mentions légales | Colostrum Bovin" description="Mentions légales de Colostrum Bovin : éditeur, hébergement, affiliation et responsabilité éditoriale.">
+<BaseLayout title="Mentions légales | Colostrum Bovin" description="Mentions légales de Colostrum Bovin : éditeur, hébergement, liens externes et responsabilité éditoriale.">
 
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org',
@@ -60,7 +60,7 @@ const legalPageUrl = new URL(Astro.url.pathname, config.domain).toString();
         <h2 style="font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); color: #242424; margin-top: 2rem; margin-bottom: 0.75rem;">3. Propriété intellectuelle</h2>
         <p>L'ensemble des contenus présents sur le Site (textes, images, graphismes, logos, vidéos, sons, marques, etc.) est protégé par le droit d'auteur et le droit des marques. Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du Site est interdite sans autorisation écrite préalable de l'éditeur.</p>
 
-        <h2 style="font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); color: #242424; margin-top: 2rem; margin-bottom: 0.75rem;">4. Liens d'affiliation</h2>
+        <h2 style="font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); color: #242424; margin-top: 2rem; margin-bottom: 0.75rem;">4. Liens externes</h2>
         <p>Le Site peut contenir des liens vers des sites tiers. Ces liens sont proposés pour faciliter l’accès aux offres citées et ne remplacent pas une vérification personnelle des informations avant achat.</p>
 
         <h2 style="font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); color: #242424; margin-top: 2rem; margin-bottom: 0.75rem;">5. Responsabilité</h2>
