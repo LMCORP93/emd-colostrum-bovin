@@ -107,7 +107,7 @@ const config: SiteConfig = {
     description: 'Guide colostrum bovin 2026 : bienfaits, avis, critères qualité, prix et notre sélection avec le Colostrum Bovin Primal en produit principal.',
     ogImage: '/og-image.jpg',
   },
-  analyticsMeasurementId: undefined,
+  analyticsMeasurementId: 'G-K8V4EVN710',
   breadcrumbs: [{ label: 'Colostrum bovin', href: '/' }],
   quickSummary: {
     assets: [
