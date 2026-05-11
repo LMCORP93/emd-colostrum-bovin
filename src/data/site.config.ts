@@ -79,7 +79,7 @@ const products: Product[] = [
       'Produit principalement disponible en ligne',
       'Section avis produit encore limitée sur la page officielle'
     ],
-    description: 'Le Colostrum Bovin Primal est actuellement le meilleur point d’entrée pour tester cette niche côté LMC : formule française, 50% d’IgG, poudre facile à utiliser et lien produit direct déjà disponible dans notre CMS. C’est le produit principal de ce premier EMD colostrum bovin.'
+    description: 'Le Colostrum Bovin Primal est actuellement l’un des points d’entrée les plus cohérents sur cette niche : formule française, 50% d’IgG, poudre facile à utiliser et fiche produit claire.'
   }
 ];
 
@@ -126,7 +126,7 @@ const config: SiteConfig = {
   faq: [
     {
       question: 'Quel est le meilleur colostrum bovin à choisir ?',
-      answer: 'Pour ce premier guide LMC, Primal Supplements ressort comme le choix le plus cohérent grâce à son origine française, sa concentration en IgG garantie à 50%, ses tests en laboratoire indépendant et son format poudre simple à utiliser.'
+      answer: 'Primal Supplements ressort comme le choix le plus cohérent grâce à son origine française, sa concentration en IgG garantie à 50%, ses tests en laboratoire indépendant et son format poudre simple à utiliser.'
     },
     {
       question: 'Quels sont les bienfaits du colostrum bovin ?',
@@ -138,11 +138,11 @@ const config: SiteConfig = {
     },
     {
       question: 'Comment prendre le Colostrum Bovin Primal ?',
-      answer: 'La fiche CMS indique un format poudre avec 30 doses par pot. La prise doit suivre les indications publiées par Primal sur la page officielle du produit, sans dépasser les recommandations de la marque.'
+      answer: 'Le produit est proposé en poudre avec 30 doses par pot. La prise doit suivre les indications publiées par Primal sur la page officielle du produit, sans dépasser les recommandations de la marque.'
     },
     {
       question: 'Le code promo LMC10 fonctionne-t-il sur le colostrum Primal ?',
-      answer: 'Le produit est enregistré dans notre CMS avec le lien affilié Primal et un prix remisé indicatif de 49,50 € via le code LMC10. Le montant final doit toujours être vérifié au checkout.'
+      answer: 'Le code LMC10 permet d’obtenir un prix remisé indicatif de 49,50 € sur la boutique officielle Primal. Le montant final doit toujours être vérifié au checkout.'
     }
   ],
   products,
