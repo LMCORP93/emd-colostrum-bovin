@@ -155,11 +155,11 @@ const config: SiteConfig = {
     { id: 'faq', label: 'FAQ' },
   ],
   pages: [
-    { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/' },
-    { type: 'blog', label: 'Avis Primal', slug: '/avis/' },
-    { type: 'blog', label: 'Danger', slug: '/danger/' },
-    { type: 'blog', label: 'Posologie', slug: '/posologie/' },
-    { type: 'blog', label: 'Pharmacie', slug: '/colostrum-bovin-pharmacie/' },
+    { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/', image: '/images/content/colostrum-bienfaits-hero.webp' },
+    { type: 'blog', label: 'Avis Primal', slug: '/avis/', image: '/images/content/colostrum-avis-hero.webp' },
+    { type: 'blog', label: 'Danger', slug: '/danger/', image: '/images/content/colostrum-bienfaits-hero.webp' },
+    { type: 'blog', label: 'Posologie', slug: '/posologie/', image: '/images/content/colostrum-avis-hero.webp' },
+    { type: 'blog', label: 'Pharmacie', slug: '/colostrum-bovin-pharmacie/', image: '/images/content/colostrum-pharmacie-hero.webp' },
   ],
 };
 
