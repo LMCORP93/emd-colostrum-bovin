@@ -7,6 +7,7 @@ import ComparatorCard from '@/components/ComparatorCard.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import FAQSection from '@/components/FAQSection.astro';
 import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
 
 const topProduct = config.products[0];
 const faq = config.faq;
@@ -165,4 +166,5 @@ const productSchema = {
       </div>
     </div>
   </main>
+  <ArticleGrid />
 </BaseLayout>

@@ -10,6 +10,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import FAQSection from '@/components/FAQSection.astro';
 import config from '@/data/site.config';
+import ArticleGrid from '@/components/ArticleGrid.astro';
 
 const topProduct = config.products[0];
 const firstReviewProduct = {
@@ -110,4 +111,5 @@ const faqSchema = {
     <ReviewPromoCard product={topProduct} />
     <FAQSection faq={faq} />
   </div><aside class="sidebar-column"><SidebarCTA logoSrc={topProduct.brandLogo} promoCode={topProduct.promoCode} promoPercent={topProduct.promoPercent} originalPrice={topProduct.originalPrice} discountPrice={topProduct.discountPrice} ctaLink={topProduct.affiliateLink} heroImage={topProduct.image} rating={topProduct.rating} reviewCount={topProduct.reviewCount} productName={topProduct.name} brandName={topProduct.brand} /></aside></div></div></div></main>
+  <ArticleGrid />
 </BaseLayout>
