@@ -65,7 +65,7 @@ const products: Product[] = [
     discountPrice: '49,50 €',
     affiliateLink: 'https://primalsupplements.fr/products/colostrum-bovin-primal?sca_ref=8439359.kLI1QMIcju',
     origin: '🇫🇷 France',
-    availability: 'En stock',
+    availability: 'Livraison en France possible via la boutique officielle ou un revendeur',
     productType: 'Poudre de colostrum bovin, 30 doses',
     pros: [
       'Concentration en IgG garantie à 50%, vérifiée par laboratoire indépendant français',
