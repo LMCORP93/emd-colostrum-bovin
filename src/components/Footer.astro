@@ -35,8 +35,7 @@ const reservedFooterRoutes = new Set([
 ]);
 
 const guideLinks = navLinks
-  .filter((link) => !reservedFooterRoutes.has(link.href))
-  .slice(0, 6);
+  .filter((link) => !reservedFooterRoutes.has(link.href));
 
 // Legal / information links
 const infoLinks: NavLink[] = [

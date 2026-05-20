@@ -23,6 +23,10 @@ const normalizePath = (value: string) => {
 
 const currentPath = normalizePath(Astro.url.pathname);
 const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
+const primaryLabels = new Set(['Accueil', 'Avis Primal', 'Bienfaits']);
+const primaryLinks = navLinks.filter((link) => primaryLabels.has(link.label));
+const guideLinks = navLinks.filter((link) => !primaryLabels.has(link.label));
+const isGuidesActive = guideLinks.some((link) => isNavLinkActive(link.href));
 ---
 
 <!-- ═══ navbar_component ═══
@@ -50,9 +54,8 @@ const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
       <!-- ═══ navbar_menu-content ═══
         Webflow: gap-64px, flex, justify-start, items-center
       -->
-      <nav class="flex items-center justify-start gap-4">
-        {navLinks.map((link) => (
-          /* ═══ navbar_menu-item ═══ Webflow: gap-12px, flex, justify-start, items-center */
+      <nav class="flex items-center justify-start gap-4" aria-label="Navigation principale">
+        {primaryLinks.map((link) => (
           <a
             href={link.href}
             aria-current={isNavLinkActive(link.href) ? 'page' : undefined}
@@ -64,6 +67,36 @@ const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
             {link.label}
           </a>
         ))}
+        {guideLinks.length > 0 && (
+          <div class="nav-dropdown">
+            <button
+              type="button"
+              class:list={[
+                'nav-dropdown-trigger font-primary text-sm transition-colors duration-200 hover:text-black',
+                isGuidesActive ? 'font-bold text-orange' : 'text-[#595b61]',
+              ]}
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              Guides
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              {guideLinks.map((link) => (
+                <a
+                  href={link.href}
+                  aria-current={isNavLinkActive(link.href) ? 'page' : undefined}
+                  class:list={[
+                    'nav-dropdown-link',
+                    isNavLinkActive(link.href) ? 'is-active' : '',
+                  ]}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       <!-- ═══ CTA Button - orange rounded pill ═══ -->
@@ -134,8 +167,8 @@ const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
   </button>
 
   <!-- Mobile nav links -->
-  <nav class="flex flex-col items-center gap-7">
-    {navLinks.map((link) => (
+  <nav class="flex flex-col items-center gap-5 max-h-[72vh] overflow-y-auto px-6" aria-label="Navigation mobile">
+    {primaryLinks.map((link) => (
       <a
         href={link.href}
         aria-current={isNavLinkActive(link.href) ? 'page' : undefined}
@@ -147,6 +180,25 @@ const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
         {link.label}
       </a>
     ))}
+    {guideLinks.length > 0 && (
+      <div class="mobile-guides">
+        <span class="mobile-guides-title">Guides</span>
+        <div class="mobile-guides-links">
+          {guideLinks.map((link) => (
+            <a
+              href={link.href}
+              aria-current={isNavLinkActive(link.href) ? 'page' : undefined}
+              class:list={[
+                'mobile-guide-link',
+                isNavLinkActive(link.href) ? 'is-active' : '',
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
   </nav>
 
   <!-- Mobile CTA Button -->
@@ -180,6 +232,19 @@ const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
   #navbar.scrolled {
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
   }
+
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 0.25rem; background: transparent; border: 0; padding: 0.5rem 0.25rem; cursor: pointer; }
+  .nav-dropdown-menu { position: absolute; right: 0; top: calc(100% + 0.5rem); min-width: 16rem; display: grid; gap: 0.125rem; padding: 0.55rem; border-radius: 1rem; background: #fff; box-shadow: 0 18px 45px rgba(36,36,36,0.13); border: 1px solid rgba(36,36,36,0.08); opacity: 0; pointer-events: none; transform: translateY(-0.35rem); transition: opacity .16s ease, transform .16s ease; }
+  .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .nav-dropdown-link { display: block; padding: 0.72rem 0.85rem; border-radius: 0.75rem; color: #595b61; font-family: 'Archivo', sans-serif; font-size: 0.88rem; font-weight: 600; text-decoration: none; line-height: 1.15; transition: background-color .16s ease, color .16s ease; }
+  .nav-dropdown-link:hover, .nav-dropdown-link.is-active { color: #ef7a1a; background: #fff5ed; }
+  .mobile-guides { display:flex; flex-direction:column; align-items:center; gap:0.75rem; margin-top:0.25rem; }
+  .mobile-guides-title { font-family:'Archivo',sans-serif; font-size:0.78rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#7a7a7a; }
+  .mobile-guides-links { display:flex; flex-direction:column; align-items:center; gap:0.75rem; }
+  .mobile-guide-link { color:#242424; font-family:'Archivo',sans-serif; font-size:1.18rem; font-weight:700; line-height:1.15; text-decoration:none; }
+  .mobile-guide-link.is-active { color:#ef7a1a; }
 
   /* ── Mobile overlay - closed (slides out to right) ── */
   .mobile-overlay {
@@ -219,6 +284,16 @@ const isNavLinkActive = (href: string) => normalizePath(href) === currentPath;
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+
+
+  document.querySelectorAll('.nav-dropdown-trigger').forEach((trigger) => {
+    const wrapper = trigger.closest('.nav-dropdown');
+    const sync = () => trigger.setAttribute('aria-expanded', wrapper?.matches(':hover, :focus-within') ? 'true' : 'false');
+    wrapper?.addEventListener('mouseenter', sync);
+    wrapper?.addEventListener('mouseleave', sync);
+    wrapper?.addEventListener('focusin', sync);
+    wrapper?.addEventListener('focusout', () => window.setTimeout(sync, 0));
+  });
 
   // ── Mobile menu toggle ──
   const btn = document.getElementById('mobile-menu-btn');

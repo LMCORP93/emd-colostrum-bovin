@@ -46,7 +46,7 @@ export interface SiteConfig {
   faq: { question: string; answer: string }[];
   products: Product[];
   tocItems: { id: string; label: string }[];
-  pages: { type: 'comparatif' | 'blog'; label: string; slug: string }[];
+  pages: { type: 'comparatif' | 'blog'; label: string; slug: string; image?: string; title?: string; description?: string; excerpt?: string }[];
 }
 
 const products: Product[] = [
@@ -155,11 +155,14 @@ const config: SiteConfig = {
     { id: 'faq', label: 'FAQ' },
   ],
   pages: [
-    { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/', image: '/images/content/colostrum-bienfaits-hero.webp' },
-    { type: 'blog', label: 'Avis Primal', slug: '/avis/', image: '/images/content/colostrum-avis-hero.webp' },
-    { type: 'blog', label: 'Danger', slug: '/danger/', image: '/images/content/colostrum-bienfaits-hero.webp' },
-    { type: 'blog', label: 'Posologie', slug: '/posologie/', image: '/images/content/colostrum-avis-hero.webp' },
-    { type: 'blog', label: 'Pharmacie', slug: '/colostrum-bovin-pharmacie/', image: '/images/content/colostrum-pharmacie-hero.webp' },
+    { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/', image: '/images/content/colostrum-bienfaits-hero.webp', title: 'Colostrum bovin bienfaits', description: 'Les bénéfices potentiels, limites et précautions du colostrum bovin adulte.' },
+    { type: 'blog', label: 'Avis Primal', slug: '/avis/', image: '/images/content/colostrum-avis-hero.webp', title: 'Colostrum Bovin Primal avis', description: 'Avis détaillé sur le Colostrum Bovin Primal : formule, IgG, origine, prix et limites.' },
+    { type: 'blog', label: 'Colostrum adulte', slug: '/colostrum-pour-adulte/', image: '/images/content/colostrum-pour-adulte-hero.webp', title: 'Colostrum pour adulte', description: 'Guide adulte : qualité, bénéfices, précautions et choix du Colostrum Bovin Primal.' },
+    { type: 'blog', label: 'Poudre', slug: '/colostrum-en-poudre/', image: '/images/content/colostrum-en-poudre-hero.webp', title: 'Colostrum en poudre', description: 'Avantages du format poudre, dosage, boisson, prix et critères qualité.' },
+    { type: 'blog', label: 'Pour humain', slug: '/colostrum-bovin-pour-humain/', image: '/images/content/colostrum-bovin-humain-hero.webp', title: 'Colostrum bovin pour humain', description: 'Comprendre l’usage humain du colostrum bovin, les critères qualité et les précautions.' },
+    { type: 'blog', label: 'Danger', slug: '/danger/', image: '/images/content/colostrum-bienfaits-hero.webp', title: 'Colostrum bovin danger', description: 'Effets secondaires possibles, allergie au lait, profils sensibles et prudence.' },
+    { type: 'blog', label: 'Posologie', slug: '/posologie/', image: '/images/content/colostrum-avis-hero.webp', title: 'Colostrum bovin posologie', description: 'Dosage, moment de prise, durée de cure, boisson froide ou tiède.' },
+    { type: 'blog', label: 'Pharmacie', slug: '/colostrum-bovin-pharmacie/', image: '/images/content/colostrum-pharmacie-hero.webp', title: 'Colostrum bovin pharmacie', description: 'Où acheter, pharmacie ou boutique officielle, prix et critères de confiance.' },
   ],
 };
 
