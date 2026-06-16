@@ -143,6 +143,14 @@ const config: SiteConfig = {
     {
       question: 'Le code promo LMC10 fonctionne-t-il sur le colostrum Primal ?',
       answer: 'Le code LMC10 permet d’obtenir un prix remisé indicatif de 49,50 € sur la boutique officielle Primal. Le montant final doit toujours être vérifié au checkout.'
+    },
+    {
+      question: 'Qu’est-ce que le Colostrum Primal de Primal Supplements ?',
+      answer: 'Le Colostrum Bovin Primal est la formule de colostrum bovin proposée par Primal Supplements. C’est notre sélection principale sur ce site : origine française, 50 % d’IgG garantis, microfiltration à basse température et 30 doses par pot.'
+    },
+    {
+      question: 'Le colostrum bovin Primal est-il adapté aux adultes ?',
+      answer: 'Oui, le Colostrum Bovin Primal est formulé pour les adultes. Comme tout complément, il ne remplace pas un avis médical en cas de traitement, allergie aux protéines de lait, grossesse ou pathologie spécifique.'
     }
   ],
   products,
