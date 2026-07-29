@@ -50,6 +50,7 @@ const productSchema = {
   },
   review: { '@type': 'Review', author: { '@type': 'Organization', name: config.siteName }, reviewRating: { '@type': 'Rating', ratingValue: topProduct.rating, bestRating: 10, worstRating: 1 } },
 };
+import ContentImage from '@/components/ContentImage.astro';
 ---
 
 <BaseLayout
@@ -125,6 +126,11 @@ const productSchema = {
               </div>
             </section>
 
+            
+            <ContentImage
+              src="/images/content/index-ill1.webp"
+              alt="Verre de lait à côté d'un bol de poudre crème"
+            />
             <section id="choisir" class="seo-guide">
               <div class="rich-text">
                 <h2>🔎 Comment choisir un bon colostrum bovin ?</h2>
@@ -135,6 +141,11 @@ const productSchema = {
               </div>
             </section>
 
+            
+            <ContentImage
+              src="/images/content/index-ill2.webp"
+              alt="Gros plan sur une cuillère doseuse de poudre"
+            />
             <section id="avis" class="seo-guide">
               <div class="rich-text">
                 <h2>⭐ Notre avis sur le Colostrum Bovin Primal</h2>
