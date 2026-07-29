@@ -163,6 +163,7 @@ const config: SiteConfig = {
     { id: 'faq', label: 'FAQ' },
   ],
   pages: [
+    { type: 'comparatif', label: 'Colostrum Primal', slug: '/', image: '/images/content/colostrum-bovin-hero.webp' },
     { type: 'blog', label: 'Bienfaits', slug: '/bienfaits/', image: '/images/content/colostrum-bienfaits-hero.webp', title: 'Colostrum bovin bienfaits', description: 'Les bénéfices potentiels, limites et précautions du colostrum bovin adulte.' },
     { type: 'blog', label: 'Avis Primal', slug: '/avis/', image: '/images/content/colostrum-avis-hero.webp', title: 'Colostrum Bovin Primal avis', description: 'Avis détaillé sur le Colostrum Bovin Primal : formule, IgG, origine, prix et limites.' },
     { type: 'blog', label: 'Colostrum adulte', slug: '/colostrum-pour-adulte/', image: '/images/content/colostrum-pour-adulte-hero.webp', title: 'Colostrum pour adulte', description: 'Guide adulte : qualité, bénéfices, précautions et choix du Colostrum Bovin Primal.' },
